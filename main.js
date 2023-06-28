@@ -12,7 +12,8 @@ import https from 'https';
 import minimist from 'minimist';
 import { UnloadExample } from "./unload-example.js";
 import { constants } from "./constants.js";
-
+import dotenv from 'dotenv';
+dotenv.config();
 const appType = {
     Basic: "basic",
     Unload: "unload",
@@ -25,7 +26,7 @@ const argv = minimist(process.argv.slice(2), {
 });
 
 const type = argv.type ?? appType.Basic;
-const region = argv.region ?? "us-west-2";
+const region = argv.region ?? "us-east-1";
 const skipDeletion = argv.skipDeletion ?? true;
 const csvFilePath = argv.csvFilePath ?? null;
 
@@ -75,10 +76,10 @@ async function callServices() {
 
     //Try cancelling a query
     //This could fail if there is no data in the table, and the example query has finished before it was cancelled.
-    await queryExample.tryCancelQuery(queryClient);
+    // await queryExample.tryCancelQuery(queryClient);
 
     // Try a query with multiple pages
-    await queryExample.tryQueryWithMultiplePages(queryClient, 20000);
+    // await queryExample.tryQueryWithMultiplePages(queryClient, 20000);
 }
 
 async function callUnload() {
