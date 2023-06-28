@@ -29,5 +29,8 @@
     "decompress": "^4.2.1",
     "minimist": "^1.2.8",
     "zlib": "^1.0.5"
+  },
+  "scripts":{
+    "start":"node main.js"
   }
 }
